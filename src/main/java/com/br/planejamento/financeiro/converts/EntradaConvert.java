@@ -26,4 +26,8 @@ public class EntradaConvert {
 	public Page<EntradaOutput> pageEntityToPageOutput(Page<EntradaEntity> listaTodas) {
 		return listaTodas.map(this::entityToOutput);
 	}
+
+	public void copyInputToEntity(EntradaEntity entradaEncontrada, EntradaInput entradaInput) {
+		modelMapper.map(entradaInput, entradaEncontrada);
+	}
 }
