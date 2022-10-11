@@ -58,5 +58,11 @@ public class EntradaController {
 		return entradaConvert.entityToOutput(entradaAlterada);
 	}
 	
+	@GetMapping("/{id}")
+	public EntradaOutput buscaPorId(@PathVariable Long id) {
+		EntradaEntity entradaEncontrada = entradaService.buscaPorId(id);
+		return entradaConvert.entityToOutput(entradaEncontrada);
+	}
+	
 
 }
