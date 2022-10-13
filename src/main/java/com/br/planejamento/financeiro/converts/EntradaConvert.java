@@ -1,5 +1,8 @@
 package com.br.planejamento.financeiro.converts;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,8 +26,8 @@ public class EntradaConvert {
 		return modelMapper.map(entradaCadastrada, EntradaOutput.class);
 	}
 
-	public Page<EntradaOutput> pageEntityToPageOutput(Page<EntradaEntity> listaTodas) {
-		return listaTodas.map(this::entityToOutput);
+	public List<EntradaOutput> pageEntityToPageOutput(List<EntradaEntity> listaTodas) {
+		return listaTodas.stream().map(entrada -> this.entityToOutput(entrada)).collect(Collectors.toList());
 	}
 
 	public void copyInputToEntity(EntradaEntity entradaEncontrada, EntradaInput entradaInput) {

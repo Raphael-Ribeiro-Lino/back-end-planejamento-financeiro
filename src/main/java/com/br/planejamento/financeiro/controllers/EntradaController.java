@@ -1,5 +1,7 @@
 package com.br.planejamento.financeiro.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +47,8 @@ public class EntradaController {
 	}
 	
 	@GetMapping
-	public Page<EntradaOutput> listaTodas(@PageableDefault(sort ="valor", direction = Direction.DESC, size = 9 ) Pageable paginacao){
-		Page<EntradaEntity> listaTodas = entradaService.listaTodas(paginacao);
+	public List<EntradaOutput> listaTodas(){
+		List<EntradaEntity> listaTodas = entradaService.listaTodas();
 		return entradaConvert.pageEntityToPageOutput(listaTodas);
 	}
 	

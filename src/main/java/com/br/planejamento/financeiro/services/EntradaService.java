@@ -1,6 +1,8 @@
 package com.br.planejamento.financeiro.services;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +22,8 @@ public class EntradaService {
 		return entradaRepository.save(entradaEntity);
 	}
 
-	public Page<EntradaEntity> listaTodas(Pageable paginacao) {
-		return entradaRepository.findAll(paginacao);
+	public List<EntradaEntity> listaTodas() {
+		return entradaRepository.findAll();
 	}
 
 	public EntradaEntity buscaPorId(Long id) {
