@@ -28,5 +28,9 @@ public class CustoFixoConvert {
 	public List<CustoFixoOutput> pageEntityToPageOutput(List<CustoFixoEntity> listaTodos) {
 		return listaTodos.stream().map(custoFixo -> this.entityToOutput(custoFixo)).collect(Collectors.toList());
 	}
+
+	public void copyInputToEntity(CustoFixoInput custoFixoInput, CustoFixoEntity custoFixoEncontrado) {
+		modelMapper.map(custoFixoInput, custoFixoEncontrado);
+	}
 	
 }
