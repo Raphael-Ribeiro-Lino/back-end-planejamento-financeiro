@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.br.planejamento.financeiro.entities.CustoVariavelEntity;
+import com.br.planejamento.financeiro.exceptions.NotFoundBussinessException;
 import com.br.planejamento.financeiro.repositories.CustoVariavelRepository;
 
 @Service
@@ -23,5 +24,14 @@ public class CustoVariavelService {
 
 	public List<CustoVariavelEntity> listaTodos() {
 		return custoVariavelRepository.findAll();
+	}
+
+	public CustoVariavelEntity buscaPorId(Long id) {
+		return custoVariavelRepository.findById(id).orElseThrow(() -> new NotFoundBussinessException("Custo variável não encontrado"));
+	}
+
+	@Transactional
+	public CustoVariavelEntity altera(CustoVariavelEntity custoVariavelEncontrado) {
+		return custoVariavelRepository.save(custoVariavelEncontrado);
 	}
 }

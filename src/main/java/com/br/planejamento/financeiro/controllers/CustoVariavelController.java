@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -44,6 +46,14 @@ public class CustoVariavelController {
 	public List<CustoVariavelOutput> listaTodos(){
 		List<CustoVariavelEntity> listaTodos = custoVariavelService.listaTodos();
 		return custoVariavelConvert.pageEntityToPageOutput(listaTodos);
+	}
+	
+	@PutMapping("/{id}")
+	public CustoVariavelOutput altera(@PathVariable Long id, @RequestBody @Valid CustoVariavelInput custoVariavelInput) {
+		CustoVariavelEntity custoVariavelEncontrado = custoVariavelService.buscaPorId(id);
+		custoVariavelConvert.copyInputToEntity(custoVariavelInput, custoVariavelEncontrado);
+		CustoVariavelEntity custoVariavelAlterado = custoVariavelService.altera(custoVariavelEncontrado);
+		return custoVariavelConvert.entityToOutput(custoVariavelAlterado);
 	}
 
 }

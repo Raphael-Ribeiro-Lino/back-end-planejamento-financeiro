@@ -28,4 +28,9 @@ public class CustoVariavelConvert {
 	public List<CustoVariavelOutput> pageEntityToPageOutput(List<CustoVariavelEntity> listaTodos) {
 		return listaTodos.stream().map(custoVariavel -> this.entityToOutput(custoVariavel)).collect(Collectors.toList());
 	}
+
+	public void copyInputToEntity(CustoVariavelInput custoVariavelInput,
+			CustoVariavelEntity custoVariavelEncontrado) {
+		modelMapper.map(custoVariavelInput, custoVariavelEncontrado);
+	}
 }
