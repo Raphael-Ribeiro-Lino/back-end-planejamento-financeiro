@@ -1,5 +1,8 @@
 package com.br.planejamento.financeiro.converts;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,5 +23,9 @@ public class CustoVariavelConvert {
 
 	public CustoVariavelOutput entityToOutput(CustoVariavelEntity custoVariavelCadastrado) {
 		return modelMapper.map(custoVariavelCadastrado, CustoVariavelOutput.class);
+	}
+
+	public List<CustoVariavelOutput> pageEntityToPageOutput(List<CustoVariavelEntity> listaTodos) {
+		return listaTodos.stream().map(custoVariavel -> this.entityToOutput(custoVariavel)).collect(Collectors.toList());
 	}
 }

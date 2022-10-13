@@ -1,5 +1,7 @@
 package com.br.planejamento.financeiro.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +19,9 @@ public class CustoVariavelService {
 	@Transactional
 	public CustoVariavelEntity cadastra(CustoVariavelEntity custoVariavelEntity) {
 		return custoVariavelRepository.save(custoVariavelEntity);
+	}
+
+	public List<CustoVariavelEntity> listaTodos() {
+		return custoVariavelRepository.findAll();
 	}
 }
