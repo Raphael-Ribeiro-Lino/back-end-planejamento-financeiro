@@ -1,5 +1,7 @@
 package com.br.planejamento.financeiro.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +19,9 @@ public class CustoFixoService {
 	@Transactional
 	public CustoFixoEntity cadastra(CustoFixoEntity custoFixoEntity) {
 		return custoFixoRepository.save(custoFixoEntity);
+	}
+
+	public List<CustoFixoEntity> listaTodos() {
+		return custoFixoRepository.findAll();
 	}
 }
