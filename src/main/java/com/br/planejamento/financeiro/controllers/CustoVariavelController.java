@@ -55,5 +55,11 @@ public class CustoVariavelController {
 		CustoVariavelEntity custoVariavelAlterado = custoVariavelService.altera(custoVariavelEncontrado);
 		return custoVariavelConvert.entityToOutput(custoVariavelAlterado);
 	}
+	
+	@GetMapping("/{id}")
+	public CustoVariavelOutput buscaPorId(@PathVariable Long id) {
+		CustoVariavelEntity custoVariavelEncontrado = custoVariavelService.buscaPorId(id);
+		return custoVariavelConvert.entityToOutput(custoVariavelEncontrado);
+	}
 
 }
