@@ -55,4 +55,10 @@ public class CustoFixoController {
 		CustoFixoEntity custoFixoAlterado = custoFixoService.altera(custoFixoEncontrado);
 		return custoFixoConvert.entityToOutput(custoFixoAlterado);
 	}
+	
+	@GetMapping("/{id}")
+	public CustoFixoOutput buscaPorId(@PathVariable Long id) {
+		CustoFixoEntity custoFixoEncontrado = custoFixoService.buscaPorId(id);
+		return custoFixoConvert.entityToOutput(custoFixoEncontrado);
+	}
 }
